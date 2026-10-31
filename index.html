@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
+  <link rel="icon" type="image/png" href="https://cdn.pixabay.com/photo/2025/01/06/00/03/g-9307713_1280.png">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Griffith Resellz | Private Supplier Vault</title>
-  <meta name="description" content="Stop wasting money on overpriced middle-men. Direct overseas supplier plugs I spent thousands vetting and testing.">
+  <meta name="description" content="Direct factory supplier plugs I spent thousands vetting and testing. High profit flips, zero guesswork.">
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -86,7 +87,6 @@
   <!-- NAVIGATION (CENTERED CLEAN LOGO) -->
   <header class="sticky top-0 z-40 backdrop-blur-xl bg-[#040507]/90 border-b border-white/5 px-4 py-3">
     <div class="max-w-4xl mx-auto relative flex items-center justify-between">
-      <!-- Spacer to balance button on right -->
       <div class="w-20 hidden sm:block"></div>
 
       <!-- Centered Modern Brand -->
@@ -99,7 +99,7 @@
 
       <!-- Quick Action -->
       <button 
-        onclick="scrollToElement('bundle-anchor')"
+        onclick="openVaultCheckout()"
         class="tap-effect absolute right-0 sm:relative px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs tracking-wide shadow-[0_0_20px_rgba(99,102,241,0.3)] transition"
       >
         Get Vault
@@ -122,8 +122,7 @@
     </div>
 
     <div class="relative z-10 max-w-xl mx-auto text-center mt-2">
-      
-      <!-- Main Hook with Neon Typography -->
+      <!-- Main Hook -->
       <h1 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight leading-[1.25] mb-3.5">
         I make thousands every single month reselling, <br class="hidden xs:inline" />
         <span class="bg-gradient-to-r from-cyan-400 via-indigo-300 to-blue-400 bg-clip-text text-transparent drop-shadow-[0_0_25px_rgba(34,211,238,0.45)]">
@@ -131,7 +130,7 @@
         </span>
       </h1>
 
-      <!-- Shortened Punchy Subtitle -->
+      <!-- Subtitle -->
       <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-6 font-normal max-w-lg mx-auto">
         Here are the exact, battle-tested suppliers I personally use. It's foolproof. I tested every batch and weeded out all the bad quality ones so you don't have to.
       </p>
@@ -193,7 +192,7 @@
           </div>
         </div>
 
-        <!-- Master Buy Action -->
+        <!-- Master Buy Action (Goes directly to Payhip Vault) -->
         <div class="pt-4 border-t border-white/10 flex items-center justify-between gap-3">
           <div>
             <div class="flex items-baseline gap-1.5">
@@ -203,19 +202,19 @@
             <div class="text-[10px] text-emerald-400 font-mono">Instant digital unlock</div>
           </div>
 
-          <button 
-            onclick="openCheckout('All-Suppliers Master Vault', 29.99, 'bundle-master')"
-            class="tap-effect flex-1 sm:flex-none px-5 py-3 rounded-xl bg-gradient-to-r from-cyan-500 via-indigo-600 to-indigo-700 hover:brightness-110 text-white font-black text-xs uppercase tracking-wider shadow-[0_0_20px_rgba(6,182,212,0.4)] transition flex items-center justify-center gap-2"
+          <a 
+            href="https://payhip.com/b/hkpsa"
+            class="tap-effect flex-1 sm:flex-none px-5 py-3 rounded-xl bg-gradient-to-r from-cyan-500 via-indigo-600 to-indigo-700 hover:brightness-110 text-white font-black text-xs uppercase tracking-wider shadow-[0_0_20px_rgba(6,182,212,0.4)] transition flex items-center justify-center gap-2 text-center"
           >
             <span>Unlock All Suppliers</span>
             <svg class="w-4 h-4 stroke-[3]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-          </button>
+          </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SECTION 2: INDIVIDUAL NICHE LISTS (12 CATEGORIES) -->
+  <!-- SECTION 2: INDIVIDUAL NICHE LISTS (12 CATEGORIES AT FLAT £9.99) -->
   <section class="max-w-xl mx-auto px-4 pt-6 pb-12">
     <div class="flex items-center justify-between mb-3 px-1">
       <div>
@@ -226,7 +225,7 @@
     </div>
 
     <div class="space-y-2.5" id="category-cards-container">
-      <!-- Injected via JavaScript -->
+      <!-- Injected via JavaScript with actual brand names and flat 9.99 price -->
     </div>
   </section>
 
@@ -240,133 +239,110 @@
           <span class="text-[10px] text-emerald-400 ml-1 font-bold">ALL 12</span>
         </div>
       </div>
-      <button 
-        onclick="openCheckout('All-Suppliers Master Vault', 29.99, 'bundle-master')"
+      <a 
+        href="https://payhip.com/b/hkpsa"
         class="tap-effect flex-1 max-w-[200px] py-2.5 rounded-xl bg-indigo-600 active:bg-indigo-500 text-white font-black text-xs uppercase tracking-wider shadow-[0_0_15px_rgba(99,102,241,0.4)] transition text-center"
       >
         Unlock Master Vault
-      </button>
-    </div>
-  </div>
-
-  <!-- CHECKOUT MODAL -->
-  <div id="checkout-modal" class="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/85 backdrop-blur-sm hidden">
-    <div class="relative w-full max-w-md rounded-t-3xl sm:rounded-2xl bg-[#0a0c12] border-t sm:border border-indigo-500/30 p-5 shadow-2xl overflow-hidden animate-in slide-in-from-bottom sm:slide-in-from-center duration-200">
-      
-      <!-- Drag pill on mobile -->
-      <div class="w-10 h-1 bg-white/20 rounded-full mx-auto mb-3 sm:hidden"></div>
-
-      <!-- Modal Header -->
-      <div class="flex items-center justify-between pb-3 border-b border-white/10">
-        <div class="flex items-center gap-2">
-          <div class="w-2 h-2 rounded-full bg-indigo-400"></div>
-          <span class="font-bold text-xs text-white uppercase tracking-wider">Instant Vault Checkout</span>
-        </div>
-        <button onclick="closeCheckout()" class="p-1 text-slate-400 hover:text-white text-base">✕</button>
-      </div>
-
-      <!-- Payment Body -->
-      <div class="pt-4" id="checkout-form-view">
-        <div class="flex justify-between items-baseline mb-3">
-          <div>
-            <h4 id="checkout-item-title" class="text-white font-extrabold text-sm sm:text-base">Master Vault</h4>
-            <div class="text-[11px] text-slate-400">Private link delivery immediately after</div>
-          </div>
-          <div id="checkout-item-price" class="text-xl font-black text-indigo-400 font-mono">£29.99</div>
-        </div>
-
-        <form onsubmit="handleCheckoutSubmit(event)" class="space-y-3">
-          <div>
-            <label class="block text-[11px] font-semibold text-slate-300 mb-1">Your Email (Where secret vault is routed)</label>
-            <input 
-              type="email" 
-              id="buyer-email" 
-              required 
-              placeholder="you@gmail.com"
-              class="w-full px-3.5 py-2.5 rounded-xl bg-black/70 border border-white/10 text-white text-xs placeholder-slate-500 focus:outline-none focus:border-indigo-400 font-mono"
-            />
-          </div>
-
-          <!-- Apple Pay Option -->
-          <button 
-            type="submit" 
-            class="tap-effect w-full py-3 rounded-xl bg-white text-black font-black text-xs flex items-center justify-center gap-1.5 shadow"
-          >
-            <span>Pay with</span>
-            <span class="text-sm font-black tracking-tight">Pay</span>
-          </button>
-
-          <div class="flex items-center gap-2 text-[10px] text-slate-500 my-0.5">
-            <div class="h-[1px] flex-1 bg-white/10"></div>
-            <span>OR CARD</span>
-            <div class="h-[1px] flex-1 bg-white/10"></div>
-          </div>
-
-          <button 
-            type="submit" 
-            id="checkout-submit-btn"
-            class="tap-effect w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-black text-xs uppercase tracking-wider shadow-[0_0_20px_rgba(99,102,241,0.4)] transition"
-          >
-            Complete Order & Unlock Access
-          </button>
-        </form>
-
-        <div class="flex items-center justify-center gap-1.5 text-[10px] text-slate-500 pt-3">
-          <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-          <span>SSL Encrypted • Direct Link Unlock</span>
-        </div>
-      </div>
-
-      <!-- Access Granted View -->
-      <div class="pt-4 text-center hidden space-y-3.5" id="checkout-success-view">
-        <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto">
-          <svg class="w-6 h-6 stroke-[3]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
-        </div>
-
-        <div>
-          <h4 class="text-base font-extrabold text-white">Access Unlocked</h4>
-          <p class="text-xs text-slate-400 mt-1">Here is your private unlisted supplier catalog URL:</p>
-        </div>
-
-        <div class="p-3 bg-black/80 border border-indigo-500/30 rounded-xl text-left font-mono">
-          <div class="text-[10px] text-indigo-400 font-bold mb-1 uppercase">Direct Vault Link:</div>
-          <div id="unlocked-url" class="text-xs text-white break-all">https://griffith-resellz.shop/vault-master/</div>
-        </div>
-
-        <a 
-          id="unlocked-open-btn" 
-          href="#" 
-          target="_blank"
-          class="tap-effect block w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-extrabold text-xs uppercase tracking-wider text-center"
-        >
-          Open Private Vault Now &rarr;
-        </a>
-      </div>
-
+      </a>
     </div>
   </div>
 
   <script>
+    const PAYHIP_VAULT_URL = "https://payhip.com/b/hkpsa";
+    const PAYHIP_SINGLE_CATEGORY_URL = "https://payhip.com/b/K4hn5";
+
+    // 12 Scraped Categories with actual brand names and flat £9.99 pricing
     const CATEGORIES = [
-      { id: 'shoes', title: 'All Shoes & Sneakers Plug', price: 14.99, desc: 'Dunks, AF1s, Bapesta, Track Runners. 1:1 shape & stitching.', count: '45+ Products' },
-      { id: 'hoodies-sweaters', title: 'All Hoodies & Sweaters Plug', price: 11.99, desc: 'Heavyweight French terry fleeces, knitwear & zip-ups.', count: '35+ Products' },
-      { id: 't-shirts', title: 'All T-Shirts Plug', price: 9.99, desc: 'Oversized blanks, accurate neck tags, graphic prints.', count: '40+ Products' },
-      { id: 'jackets', title: 'All Jackets & Puffers Plug', price: 14.99, desc: 'Puffer down fill, windbreakers, gilets. High profit flips.', count: '25+ Products' },
-      { id: 'pants-shorts', title: 'All Pants & Shorts Plug', price: 9.99, desc: 'Fleece shorts, cargo trousers, tracksuit bottoms.', count: '30+ Products' },
-      { id: 'jersey', title: 'All Jerseys Plug', price: 9.99, desc: 'Classic retro kits, current shirts, embroidered player editions.', count: '50+ Products' },
-      { id: 'accessories', title: 'All Accessories & Belts Plug', price: 8.99, desc: 'Leather belts, cardholders, sunglasses, chains.', count: '30+ Products' },
-      { id: 'perfume', title: 'All Fragrances & Perfume Plug', price: 11.99, desc: 'High-end designer scents with identical bottles and long longevity.', count: '20+ Products' },
-      { id: 'bags', title: 'All Bags & Backpacks Plug', price: 11.99, desc: 'Shoulder bags, luxury backpacks, travel duffels.', count: '25+ Products' },
-      { id: 'electronics', title: 'All Electronics & Audio Plug', price: 12.99, desc: 'ANC wireless headphones, chargers, viral tech items.', count: '28+ Products' },
-      { id: 'headwear', title: 'All Headwear & Beanies Plug', price: 8.99, desc: 'Fitted caps, beanies, winter balaclavas. Cheap unit costs.', count: '20+ Products' },
-      { id: 'other-stuff', title: 'All Other Viral Stock Plug', price: 8.99, desc: 'Stanley tumblers, plush toys, trending collectibles.', count: '15+ Products' }
+      { 
+        id: 'shoes', 
+        title: 'All Shoes & Sneakers Plug', 
+        price: 9.99, 
+        desc: 'Nike Dunk Lows, Jordan 4s, Travis Scott, Bapesta, Balenciaga Track. 1:1 shape & suede.', 
+        count: '45+ Products' 
+      },
+      { 
+        id: 'hoodies-sweaters', 
+        title: 'All Hoodies & Sweaters Plug', 
+        price: 9.99, 
+        desc: 'Sp5der, Denim Tears, Ralph Lauren knitwear, Essentials, Stüssy fleece zip-ups.', 
+        count: '35+ Products' 
+      },
+      { 
+        id: 't-shirts', 
+        title: 'All T-Shirts Plug', 
+        price: 9.99, 
+        desc: 'Corteiz, Trapstar, Broken Planet, Hellstar, Chrome Hearts heavyweight blanks.', 
+        count: '40+ Products' 
+      },
+      { 
+        id: 'jackets', 
+        title: 'All Jackets & Puffers Plug', 
+        price: 9.99, 
+        desc: 'Trapstar Hyperdrive, Corteiz bolo puffers, Arc\'teryx Beta LT, Canada Goose, North Face Nuptse.', 
+        count: '25+ Products' 
+      },
+      { 
+        id: 'pants-shorts', 
+        title: 'All Pants & Shorts Plug', 
+        price: 9.99, 
+        desc: 'Eric Emanuel EE shorts, Nike Tech Fleece joggers, Stone Island cargo trousers.', 
+        count: '30+ Products' 
+      },
+      { 
+        id: 'jersey', 
+        title: 'All Retro & Club Jerseys Plug', 
+        price: 9.99, 
+        desc: 'Real Madrid, Barcelona, Man United, retro 90s vintage kits, embroidered player badges.', 
+        count: '50+ Products' 
+      },
+      { 
+        id: 'accessories', 
+        title: 'All Accessories & Belts Plug', 
+        price: 9.99, 
+        desc: 'BB Simon rhinestone belts, Ferragamo & LV initial buckles, Prada sunglasses.', 
+        count: '30+ Products' 
+      },
+      { 
+        id: 'perfume', 
+        title: 'All Fragrances & Perfume Plug', 
+        price: 9.99, 
+        desc: 'Dior Sauvage Elixir, Creed Aventus, Baccarat Rouge 540, Tom Ford with 1:1 bottles.', 
+        count: '20+ Products' 
+      },
+      { 
+        id: 'bags', 
+        title: 'All Bags & Backpacks Plug', 
+        price: 9.99, 
+        desc: 'Trapstar crossbody bags, Goyard Saint Louis totes, MCM & Louis Vuitton Christopher backpacks.', 
+        count: '25+ Products' 
+      },
+      { 
+        id: 'electronics', 
+        title: 'All Electronics & Audio Plug', 
+        price: 9.99, 
+        desc: 'Apple AirPods Max, AirPods Pro 2 (valid serials, spatial audio), Dyson Airwrap.', 
+        count: '28+ Products' 
+      },
+      { 
+        id: 'headwear', 
+        title: 'All Headwear & Beanies Plug', 
+        price: 9.99, 
+        desc: 'Arc\'teryx bird head beanies, New Era fitted 59FIFTY caps, Chrome Hearts trucker hats.', 
+        count: '20+ Products' 
+      },
+      { 
+        id: 'other-stuff', 
+        title: 'All Other Viral Stock Plug', 
+        price: 9.99, 
+        desc: 'Stanley Quencher 40oz tumblers, Jellycat plushies, Supreme accessories.', 
+        count: '15+ Products' 
+      }
     ];
 
     let currentCurrency = 'GBP';
     const currencyMultipliers = { GBP: 1.0, EUR: 1.17, USD: 1.28 };
     const currencySymbols = { GBP: '£', EUR: '€', USD: '$' };
-
-    let currentCheckoutProduct = null;
 
     function setCurrency(curr) {
       currentCurrency = curr;
@@ -407,51 +383,20 @@
 
           <div class="flex items-center gap-2.5 shrink-0">
             <span class="font-mono font-bold text-xs text-white">${formatPrice(cat.price)}</span>
-            <button 
-              onclick="openCheckout('${cat.title}', ${cat.price}, '${cat.id}')"
+            <a 
+              href="${PAYHIP_SINGLE_CATEGORY_URL}"
               class="tap-effect px-3 py-1.5 rounded-lg bg-white/10 hover:bg-indigo-600 text-white font-bold text-xs transition"
             >
               Get
-            </button>
+            </a>
           </div>
         `;
         container.appendChild(row);
       });
     }
 
-    function openCheckout(title, gbpPrice, id) {
-      currentCheckoutProduct = { title, gbpPrice, id };
-      document.getElementById('checkout-item-title').innerText = title;
-      document.getElementById('checkout-item-price').innerText = formatPrice(gbpPrice);
-      document.getElementById('checkout-submit-btn').innerText = `Pay ${formatPrice(gbpPrice)} & Unlock`;
-
-      document.getElementById('checkout-form-view').classList.remove('hidden');
-      document.getElementById('checkout-success-view').classList.add('hidden');
-      document.getElementById('checkout-modal').classList.remove('hidden');
-    }
-
-    function closeCheckout() {
-      document.getElementById('checkout-modal').classList.add('hidden');
-    }
-
-    function handleCheckoutSubmit(e) {
-      e.preventDefault();
-      const email = document.getElementById('buyer-email').value.trim();
-      if (!email || !email.includes('@')) return;
-
-      const slug = currentCheckoutProduct ? currentCheckoutProduct.id : 'master';
-      const targetUrl = `https://griffith-resellz.shop/vault-${slug}/`;
-
-      document.getElementById('unlocked-url').innerText = targetUrl;
-      document.getElementById('unlocked-open-btn').href = targetUrl;
-
-      document.getElementById('checkout-form-view').classList.add('hidden');
-      document.getElementById('checkout-success-view').classList.remove('hidden');
-    }
-
-    function scrollToElement(id) {
-      const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    function openVaultCheckout() {
+      window.location.href = PAYHIP_VAULT_URL;
     }
 
     window.addEventListener('DOMContentLoaded', () => {
