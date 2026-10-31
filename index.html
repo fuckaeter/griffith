@@ -1,274 +1,219 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Griffith Resellz | Private Supplier Vault</title>
-  <meta name="description" content="Bought the BMW at 18 off Vinted flipping. Stop paying reseller margins. Here are the exact overseas supplier links I personally use to source stock for pennies.">
-  
+  <meta name="description" content="Stop wasting money on overpriced middle-men. Direct overseas supplier plugs I spent thousands vetting and testing.">
+
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Font: Inter -->
+  
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['Cinzel', 'serif']
+          },
+          colors: {
+            obsidian: '#040507',
+            cardbg: '#0a0c10',
+            cardborder: 'rgba(255, 255, 255, 0.08)',
+            accent: '#6366f1',
+            accentGlow: 'rgba(99, 102, 241, 0.35)',
+            steel: '#94a3b8'
+          }
+        }
+      }
+    }
+  </script>
+
   <style>
     body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background-color: #06070a;
-      color: #e2e8f0;
-      overflow-x: hidden;
+      background-color: #040507;
+      color: #f1f5f9;
+      -webkit-tap-highlight-color: transparent;
     }
-    .neon-border {
-      box-shadow: 0 0 25px rgba(37, 99, 235, 0.15);
+    
+    /* Subtle noise & glow overlay */
+    .femto-vignette {
+      background: radial-gradient(circle at 50% 20%, rgba(99, 102, 241, 0.08) 0%, rgba(4, 5, 7, 0.95) 80%);
     }
-    .neon-text-glow {
-      text-shadow: 0 0 20px rgba(56, 189, 248, 0.6);
+
+    .griffith-hero-art {
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 90%);
+      -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 90%);
+      filter: contrast(125%) brightness(85%) drop-shadow(0 0 45px rgba(99,102,241,0.25));
     }
-    .glass-card {
-      background: rgba(14, 17, 26, 0.75);
-      backdrop-filter: blur(12px);
+
+    .glass-panel {
+      background: rgba(10, 12, 16, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(255, 255, 255, 0.07);
     }
-    .glass-card-hover:hover {
-      border-color: rgba(56, 189, 248, 0.4);
-      transform: translateY(-3px);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(56, 189, 248, 0.15);
-    }
-    .radial-bg {
-      background: radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.18) 0%, rgba(6, 7, 10, 0) 70%);
+
+    .tap-effect:active {
+      transform: scale(0.97);
     }
   </style>
 </head>
-<body class="selection:bg-cyan-500 selection:text-black">
+<body class="selection:bg-indigo-500 selection:text-white pb-24 sm:pb-12">
 
-  <!-- TOP PROMO BANNER -->
-  <div class="bg-[#0b0e17] border-b border-white/5 py-2 px-4 text-center text-xs text-slate-300 font-medium">
-    <div class="max-w-6xl mx-auto flex items-center justify-between">
-      <span class="hidden sm:inline-block text-cyan-400 font-mono text-[11px]">⚡ LIVE FROM TIKTOK: @griffithresellz</span>
-      <div class="mx-auto sm:mx-0 flex items-center gap-2">
-        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-        <span class="font-bold text-white text-[11px] sm:text-xs">LIMITED SPOTS OPEN FOR 2026 SUPPLIER ACCESS</span>
+  <!-- TOP MOBILE-OPTIMISED ANNOUNCEMENT TICKER -->
+  <div class="bg-[#08090d] border-b border-white/5 py-2 px-3 text-[11px] text-slate-400">
+    <div class="max-w-4xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-1.5 font-medium truncate">
+        <span class="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse"></span>
+        <span class="text-white font-bold tracking-wide uppercase">@griffithresellz</span>
+        <span class="hidden xs:inline text-slate-500">• 2026 Batch Directory</span>
       </div>
-      <span class="text-slate-400 font-mono text-[11px] hidden md:inline-block">griffith-resellz.shop</span>
+
+      <!-- Currency Switcher -->
+      <div class="flex items-center gap-1 shrink-0 font-mono text-[10px]">
+        <button onclick="setCurrency('GBP')" id="btn-curr-GBP" class="px-1.5 py-0.5 rounded font-bold bg-indigo-600 text-white">GBP £</button>
+        <button onclick="setCurrency('EUR')" id="btn-curr-EUR" class="px-1.5 py-0.5 rounded font-bold text-slate-400 hover:text-white">EUR €</button>
+        <button onclick="setCurrency('USD')" id="btn-curr-USD" class="px-1.5 py-0.5 rounded font-bold text-slate-400 hover:text-white">USD $</button>
+      </div>
     </div>
   </div>
 
   <!-- NAVIGATION -->
-  <nav class="sticky top-0 z-40 backdrop-blur-xl bg-[#06070a]/90 border-b border-white/5 px-4 sm:px-8 py-3.5">
-    <div class="max-w-6xl mx-auto flex items-center justify-between">
+  <header class="sticky top-0 z-40 backdrop-blur-xl bg-[#040507]/90 border-b border-white/5 px-4 py-3">
+    <div class="max-w-4xl mx-auto flex items-center justify-between">
       <a href="#" class="flex items-center gap-2.5">
-        <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-blue-600 to-cyan-400 p-[1px] flex items-center justify-center shadow-[0_0_15px_rgba(56,189,248,0.4)]">
-          <div class="w-full h-full bg-[#06070a] rounded-[7px] flex items-center justify-center font-black text-cyan-400 text-sm">
+        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-slate-800 p-[1px] flex items-center justify-center shadow-[0_0_15px_rgba(99,102,241,0.3)]">
+          <div class="w-full h-full bg-[#040507] rounded-[7px] flex items-center justify-center font-display font-black text-indigo-400 text-xs">
             G
           </div>
         </div>
         <div class="flex flex-col">
-          <span class="font-extrabold text-sm sm:text-base tracking-tight text-white uppercase">GRIFFITH<span class="text-cyan-400">RESELLZ</span></span>
-          <span class="text-[9px] text-slate-400 font-mono">@griffithresellz • Official Vault</span>
+          <span class="font-display font-black text-sm tracking-wider text-white">GRIFFITH<span class="text-indigo-400">RESELLZ</span></span>
+          <span class="text-[9px] text-slate-500 font-mono tracking-tighter">AUTHENTIC FACTORY SOURCING</span>
         </div>
       </a>
 
-      <div class="flex items-center gap-3">
-        <a href="#story" class="hidden sm:inline-block text-xs font-semibold text-slate-400 hover:text-white transition">My Story</a>
-        <a href="#vault" class="hidden sm:inline-block text-xs font-semibold text-slate-400 hover:text-white transition">Categories</a>
-        <a href="#bundle" class="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-black font-extrabold text-xs shadow-[0_0_15px_rgba(56,189,248,0.35)] transition transform active:scale-95">
-          Get All Suppliers £29.99
-        </a>
-      </div>
+      <button 
+        onclick="scrollToElement('bundle-anchor')"
+        class="tap-effect px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs tracking-wide shadow-[0_0_20px_rgba(99,102,241,0.3)] transition"
+      >
+        Get Vault
+      </button>
     </div>
-  </nav>
+  </header>
 
-  <!-- HERO SECTION: PERSONAL HOOK FROM TIKTOK -->
-  <section class="radial-bg pt-12 pb-16 px-4">
-    <div class="max-w-4xl mx-auto text-center">
+  <!-- HERO SECTION WITH INTEGRATED FEMTO/GRIFFITH BACKDROP -->
+  <section class="relative pt-6 pb-8 px-4 overflow-hidden femto-vignette border-b border-white/5">
+    
+    <!-- Griffith / Femto Atmosphere Render Layer -->
+    <div class="absolute inset-0 pointer-events-none flex justify-center items-start opacity-20 sm:opacity-25 z-0 -top-8">
+      <!-- High-res transparent silhouette render (fallback to artwork URL) -->
+      <img 
+        src="https://placehold.co/800x1000/040507/ffffff?text=+" 
+        id="griffith-bg-art"
+        alt="Griffith Emblem" 
+        class="griffith-hero-art h-[440px] sm:h-[520px] object-top object-contain"
+        onerror="this.style.display='none'"
+      />
+    </div>
+
+    <div class="relative z-10 max-w-xl mx-auto text-center mt-2">
       
-      <!-- Verified Badge -->
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-cyan-300 text-xs font-semibold mb-6">
-        <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
-        <span>If you came from my TikTok, you already know the story</span>
+      <!-- Authority Pill -->
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300 text-[11px] font-medium mb-4">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+        <span>Straight from my TikTok • No middlemen</span>
       </div>
 
-      <!-- Main Headline -->
-      <h1 class="text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-[1.1] mb-6">
-        I bought the BMW at 18 purely off <br class="hidden sm:inline" />
-        <span class="bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent neon-text-glow">
-          flipping on Vinted & Depop.
-        </span>
+      <!-- Main Hook -->
+      <h1 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight leading-[1.2] mb-3.5">
+        I make thousands every single month flipping clothes & tech.
       </h1>
 
-      <!-- The Real Talk Paragraph -->
-      <p class="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed mb-8">
-        Here's the brutal truth nobody on your feed will tell you: <b class="text-white">you will never get rich buying items from retail or other UK resellers.</b> The whole game is won in the buy. When you pay £18 for Dunks and £24 for puffers straight from direct factory plugs, profit on Vinted is automatic.
+      <!-- Personal Truth Paragraph -->
+      <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-6 font-normal">
+        Finding direct factory plugs that don't scam you with garbage quality took me years and thousands of pounds in wasted samples. I tested every batch, weeded out the dishonest sellers, and locked in the lowest unit prices. <b class="text-white">Here is the exact, battle-tested supplier directory I personally use.</b>
       </p>
 
-      <!-- CTA Row -->
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
-        <a href="#bundle" class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-black font-extrabold text-sm shadow-[0_0_25px_rgba(6,182,212,0.4)] transition transform hover:-translate-y-0.5 active:scale-95 flex items-center justify-center gap-2">
-          <span>Unlock The Full Supplier Vault</span>
-          <svg class="w-4 h-4 stroke-[3]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-        </a>
-        <a href="#vault" class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-white/5 hover:bg-white/10 text-white font-bold text-sm border border-white/10 transition">
-          Browse Individual Lists (£8.99+)
-        </a>
-      </div>
-
-      <!-- Trust Social Proof Stats -->
-      <div class="grid grid-cols-3 max-w-lg mx-auto gap-4 mt-12 pt-8 border-t border-white/10">
-        <div>
-          <div class="text-xl sm:text-2xl font-black text-white font-mono">18 y/o</div>
-          <div class="text-[11px] text-slate-400 mt-0.5">Started From £0</div>
+      <!-- Fast Proof Badges -->
+      <div class="flex items-center justify-center gap-4 text-[11px] text-slate-400 font-mono pb-2">
+        <div class="flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+          <span>Tested 1:1 Batches</span>
         </div>
-        <div>
-          <div class="text-xl sm:text-2xl font-black text-cyan-400 font-mono">£350+</div>
-          <div class="text-[11px] text-slate-400 mt-0.5">Average Daily Profit</div>
+        <div class="flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+          <span>Instant Direct Links</span>
         </div>
-        <div>
-          <div class="text-xl sm:text-2xl font-black text-white font-mono">250+</div>
-          <div class="text-[11px] text-slate-400 mt-0.5">Tested Overseas Links</div>
+        <div class="flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+          <span>Zero Middlemen</span>
         </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- MY STORY & THE BMW PROOF SECTION -->
-  <section id="story" class="max-w-5xl mx-auto px-4 py-12">
-    <div class="glass-card rounded-3xl p-6 sm:p-10 border border-white/10 relative overflow-hidden">
-      <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
-
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-        
-        <!-- Story Copy -->
-        <div class="md:col-span-7 space-y-4">
-          <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-[11px] font-mono text-cyan-400">
-            <span>REAL RESELLER STORY</span>
-          </div>
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-white leading-tight">
-            "Everyone kept asking in my TikTok comments: <span class="text-cyan-400">Where are you getting this stock?</span>"
-          </h2>
-          <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
-            When I showed the 1 Series I bought at 18 purely off flipping streetwear, hoodies, and electronics on Vinted, my DMs blew up with people asking if I was buying off wholesale brokers in the UK.
-          </p>
-          <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
-            I wasn't. UK wholesalers take 50% cuts and leave you with breadcrumbs. I spent months digging through Chinese factory agents, testing shipping lines, and ordering samples until I compiled direct plugs on Sugargoo and Weidian where high-tier jackets cost £25 and flip for £95+ on Vinted.
-          </p>
-          <div class="p-3.5 rounded-xl bg-black/50 border border-white/5 text-xs text-slate-300 font-medium">
-            <span class="text-cyan-400 font-bold">Why I'm releasing this:</span> Vinted has millions of daily active buyers in the UK and Europe alone. There is enough bread for everyone. I'd rather build an army of people who actually eat than keep these links rotting on my desktop.
-          </div>
-        </div>
-
-        <!-- Visual Proof Card Box -->
-        <div class="md:col-span-5 bg-[#090b12] border border-cyan-500/20 rounded-2xl p-5 shadow-2xl flex flex-col justify-between space-y-4">
-          <div class="flex items-center justify-between pb-3 border-b border-white/10">
-            <div class="flex items-center gap-2">
-              <span class="w-3 h-3 rounded-full bg-cyan-400"></span>
-              <span class="text-xs font-bold text-white uppercase tracking-wider">The Griffith Math</span>
-            </div>
-            <span class="text-[10px] text-emerald-400 font-mono font-bold bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">VERIFIED</span>
-          </div>
-
-          <!-- Flip 1 -->
-          <div class="p-3 rounded-xl bg-white/5 border border-white/5 space-y-1">
-            <div class="flex justify-between text-xs font-bold">
-              <span class="text-white">Designer Down Puffer</span>
-              <span class="text-emerald-400">+£78 Profit</span>
-            </div>
-            <div class="text-[11px] text-slate-400 flex justify-between font-mono">
-              <span>Source link: £26.00</span>
-              <span class="text-slate-300">Vinted Sale: £104.00</span>
-            </div>
-          </div>
-
-          <!-- Flip 2 -->
-          <div class="p-3 rounded-xl bg-white/5 border border-white/5 space-y-1">
-            <div class="flex justify-between text-xs font-bold">
-              <span class="text-white">Low Top Sneakers</span>
-              <span class="text-emerald-400">+£52 Profit</span>
-            </div>
-            <div class="text-[11px] text-slate-400 flex justify-between font-mono">
-              <span>Source link: £19.50</span>
-              <span class="text-slate-300">Vinted Sale: £71.50</span>
-            </div>
-          </div>
-
-          <!-- Flip 3 -->
-          <div class="p-3 rounded-xl bg-white/5 border border-white/5 space-y-1">
-            <div class="flex justify-between text-xs font-bold">
-              <span class="text-white">Wireless ANC Headphones</span>
-              <span class="text-emerald-400">+£65 Profit</span>
-            </div>
-            <div class="text-[11px] text-slate-400 flex justify-between font-mono">
-              <span>Source link: £15.00</span>
-              <span class="text-slate-300">Vinted Sale: £80.00</span>
-            </div>
-          </div>
-
-          <div class="pt-2 text-center text-[10px] text-slate-500 font-mono">
-            Direct Sugargoo agent ordering links provided in vault.
-          </div>
-        </div>
-
       </div>
     </div>
   </section>
 
-  <!-- MASTER ALL-IN-ONE BUNDLE (HIGH CONVERTING ANCHOR) -->
-  <section id="bundle" class="max-w-5xl mx-auto px-4 py-8">
-    <div class="rounded-3xl bg-gradient-to-b from-[#101524] via-[#090c14] to-[#090c14] border-2 border-cyan-400/50 p-6 sm:p-10 shadow-[0_0_50px_rgba(6,182,212,0.2)] relative overflow-hidden">
+  <!-- SECTION 1: ALL-SUPPLIERS MASTER VAULT (RIGHT BELOW HERO) -->
+  <section id="bundle-anchor" class="max-w-xl mx-auto px-4 pt-6 pb-4">
+    <div class="relative rounded-2xl bg-gradient-to-b from-[#11131c] to-[#090b10] border-2 border-indigo-500/60 p-5 shadow-[0_0_35px_rgba(99,102,241,0.25)] overflow-hidden">
       
-      <div class="absolute top-0 right-0 bg-cyan-400 text-black font-black text-[10px] sm:text-xs px-4 py-1 rounded-bl-xl uppercase tracking-wider shadow">
-        MOST POPULAR • BEST VALUE
+      <!-- Top Flash Tag -->
+      <div class="flex items-center justify-between pb-3 border-b border-white/10 mb-3.5">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-indigo-400 animate-ping"></span>
+          <span class="font-display font-black text-xs text-white uppercase tracking-wider">MASTER VAULT (ALL 12)</span>
+        </div>
+        <span class="px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-300 font-mono text-[10px] font-bold border border-indigo-500/30">
+          EVERYTHING UNLOCKED
+        </span>
       </div>
 
-      <div class="max-w-3xl">
-        <span class="text-cyan-400 font-mono text-xs font-bold uppercase tracking-widest">★ THE COMPLETE ARSENAL</span>
-        <h2 class="text-2xl sm:text-4xl font-black text-white mt-1 mb-3">
-          ALL-SUPPLIERS MASTER VAULT (EVERYTHING)
+      <div>
+        <h2 class="text-xl sm:text-2xl font-black text-white leading-tight">
+          The Complete Griffith Supplier Vault
         </h2>
-        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-6">
-          You don't need to guess which niche will pop off. Get instant access to every single one of my tested supplier categories in one place, plus my 2026 Customs Avoidance & Triangle Shipping guide so your parcels land at your door smoothly every time.
+        <p class="text-xs text-slate-300 mt-1 mb-4 leading-relaxed">
+          Skip buying single lists. Get instant access to every single tested supplier category in one unified unlisted database, with live preview photos and direct one-click agent buttons.
         </p>
 
-        <!-- Checklist -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-8 text-xs text-slate-200">
-          <div class="flex items-center gap-2">
-            <span class="text-cyan-400 font-bold">✓</span> All 12 Full Category Direct Agent Lists
+        <!-- Bullet Highlights -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-200 mb-5">
+          <div class="flex items-center gap-2 bg-white/5 p-2 rounded-lg border border-white/5">
+            <span class="text-indigo-400 font-bold">✓</span> All 12 Full Category Lists Included
           </div>
-          <div class="flex items-center gap-2">
-            <span class="text-cyan-400 font-bold">✓</span> Direct Sugargoo / Weidian links with item previews
+          <div class="flex items-center gap-2 bg-white/5 p-2 rounded-lg border border-white/5">
+            <span class="text-indigo-400 font-bold">✓</span> Real Product Photos With Each Link
           </div>
-          <div class="flex items-center gap-2">
-            <span class="text-cyan-400 font-bold">✓</span> Zero Customs Tax Triangle Route Guide
+          <div class="flex items-center gap-2 bg-white/5 p-2 rounded-lg border border-white/5">
+            <span class="text-indigo-400 font-bold">✓</span> Direct Sugargoo / Weidian Ordering
           </div>
-          <div class="flex items-center gap-2">
-            <span class="text-cyan-400 font-bold">✓</span> Vinted Listing Blueprint (How to title & sell fast)
-          </div>
-          <div class="flex items-center gap-2">
-            <span class="text-cyan-400 font-bold">✓</span> Lifetime future link updates as batches restock
-          </div>
-          <div class="flex items-center gap-2">
-            <span class="text-cyan-400 font-bold">✓</span> Instant private web page access delivered immediately
+          <div class="flex items-center gap-2 bg-white/5 p-2 rounded-lg border border-white/5">
+            <span class="text-indigo-400 font-bold">✓</span> Lifetime Access + Restock Updates
           </div>
         </div>
 
-        <!-- Buy Action Row -->
-        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-6 border-t border-white/10">
+        <!-- Master Buy Action -->
+        <div class="pt-4 border-t border-white/10 flex items-center justify-between gap-3">
           <div>
-            <div class="flex items-baseline gap-2">
-              <span class="text-3xl sm:text-4xl font-black text-white font-mono">£29.99</span>
-              <span class="text-sm text-slate-500 line-through font-mono">£99.99</span>
-              <span class="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded">SAVE 70%</span>
+            <div class="flex items-baseline gap-1.5">
+              <span id="price-master" class="text-2xl font-black text-white font-mono">£29.99</span>
+              <span class="text-xs text-slate-500 line-through font-mono">£99.99</span>
             </div>
-            <div class="text-[11px] text-slate-400 mt-1">One-time payment • Instant automated access</div>
+            <div class="text-[10px] text-emerald-400 font-mono">Instant digital unlock</div>
           </div>
 
           <button 
-            onclick="openCheckoutModal('All-Suppliers Master Vault', 29.99, 'bundle-master')"
-            class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-300 hover:to-blue-400 text-black font-extrabold text-sm shadow-[0_0_25px_rgba(6,182,212,0.5)] transition transform hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2"
+            onclick="openCheckout('All-Suppliers Master Vault', 29.99, 'bundle-master')"
+            class="tap-effect flex-1 sm:flex-none px-5 py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-indigo-600 hover:from-indigo-400 hover:to-indigo-500 text-white font-black text-xs uppercase tracking-wider shadow-[0_0_20px_rgba(99,102,241,0.5)] transition flex items-center justify-center gap-2"
           >
-            <span>Get The Master Vault £29.99</span>
+            <span>Unlock All Lists</span>
             <svg class="w-4 h-4 stroke-[3]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
           </button>
         </div>
@@ -276,315 +221,257 @@
     </div>
   </section>
 
-  <!-- 12 INDIVIDUAL CATEGORY LISTS -->
-  <section id="vault" class="max-w-6xl mx-auto px-4 py-12">
-    <div class="text-center max-w-2xl mx-auto mb-10">
-      <span class="text-cyan-400 font-mono text-xs font-bold uppercase tracking-widest">INDIVIDUAL PLUGS</span>
-      <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-1">
-        Only Want One Specific Niche?
-      </h2>
-      <p class="text-slate-400 text-xs sm:text-sm mt-2">
-        If you only resell shoes or just want tracksuits, grab the single list below. Each list includes direct links with visual previews.
-      </p>
+  <!-- SECTION 2: INDIVIDUAL NICHE LISTS (12 CATEGORIES) -->
+  <section class="max-w-xl mx-auto px-4 pt-6 pb-12">
+    <div class="flex items-center justify-between mb-3 px-1">
+      <div>
+        <h3 class="text-base font-extrabold text-white">Individual Supplier Categories</h3>
+        <p class="text-[11px] text-slate-400">If you only flip one specific type of product</p>
+      </div>
+      <span class="text-[10px] text-slate-500 font-mono">12 Categories</span>
     </div>
 
-    <!-- 12 Cards Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4" id="categories-grid">
-      <!-- Injected via JavaScript below -->
+    <!-- Mobile Stack: Clean 1-column list cards designed for thumbs -->
+    <div class="space-y-2.5" id="category-cards-container">
+      <!-- Injected via JavaScript -->
     </div>
   </section>
 
-  <!-- FAQ SECTION -->
-  <section class="max-w-3xl mx-auto px-4 py-12">
-    <div class="text-center mb-8">
-      <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Frequently Asked Questions</h2>
-      <p class="text-slate-400 text-xs sm:text-sm mt-1">Real answers before you start.</p>
+  <!-- STICKY BOTTOM QUICK-BUY BAR (MOBILE-ONLY CONVERSION BOOSTER) -->
+  <div class="sm:hidden fixed bottom-0 inset-x-0 z-40 bg-[#06070a]/95 backdrop-blur-md border-t border-white/10 px-4 py-2.5">
+    <div class="flex items-center justify-between gap-3 max-w-xl mx-auto">
+      <div>
+        <div class="text-[10px] text-slate-400 uppercase font-mono">Full Supplier Vault</div>
+        <div class="text-base font-black text-white font-mono leading-none">
+          <span id="price-sticky">£29.99</span>
+          <span class="text-[10px] text-emerald-400 ml-1 font-bold">ALL 12</span>
+        </div>
+      </div>
+      <button 
+        onclick="openCheckout('All-Suppliers Master Vault', 29.99, 'bundle-master')"
+        class="tap-effect flex-1 max-w-[200px] py-2.5 rounded-xl bg-indigo-600 active:bg-indigo-500 text-white font-black text-xs uppercase tracking-wider shadow-[0_0_15px_rgba(99,102,241,0.4)] transition text-center"
+      >
+        Unlock Master Vault
+      </button>
     </div>
+  </div>
 
-    <div class="space-y-3">
-      <!-- Q1 -->
-      <div class="glass-card rounded-2xl p-4 border border-white/5">
-        <h3 class="font-bold text-sm text-white flex items-center justify-between cursor-pointer" onclick="toggleFaq(this)">
-          <span>How much capital do I need to actually start ordering?</span>
-          <span class="text-cyan-400 text-base">+</span>
-        </h3>
-        <p class="text-xs text-slate-400 mt-2 leading-relaxed hidden">
-          You don't need thousands. You can start with £40-£60. Buy 2 hoodies or 2 pairs of shoes, wait for them to arrive, list them on Vinted, take your profit, and roll it back into bigger hauls. That's exactly how I built my bankroll.
-        </p>
-      </div>
-
-      <!-- Q2 -->
-      <div class="glass-card rounded-2xl p-4 border border-white/5">
-        <h3 class="font-bold text-sm text-white flex items-center justify-between cursor-pointer" onclick="toggleFaq(this)">
-          <span>How do the links work?</span>
-          <span class="text-cyan-400 text-base">+</span>
-        </h3>
-        <p class="text-xs text-slate-400 mt-2 leading-relaxed hidden">
-          Immediately after checkout, you get instant access to the private catalog page. Each product displays its preview photo and a one-click button that opens the exact supplier page on Sugargoo so you can add it straight to your cart.
-        </p>
-      </div>
-
-      <!-- Q3 -->
-      <div class="glass-card rounded-2xl p-4 border border-white/5">
-        <h3 class="font-bold text-sm text-white flex items-center justify-between cursor-pointer" onclick="toggleFaq(this)">
-          <span>Will I get caught by UK / EU customs?</span>
-          <span class="text-cyan-400 text-base">+</span>
-        </h3>
-        <p class="text-xs text-slate-400 mt-2 leading-relaxed hidden">
-          No, as long as you use Triangle Tax-Free shipping lines (DHL / Royal Mail routed lines on Sugargoo). They clear customs in Germany/Netherlands before landing at your house with zero import duties.
-        </p>
-      </div>
-
-      <!-- Q4 -->
-      <div class="glass-card rounded-2xl p-4 border border-white/5">
-        <h3 class="font-bold text-sm text-white flex items-center justify-between cursor-pointer" onclick="toggleFaq(this)">
-          <span>Why not just find the links on Reddit yourself?</span>
-          <span class="text-cyan-400 text-base">+</span>
-        </h3>
-        <p class="text-xs text-slate-400 mt-2 leading-relaxed hidden">
-          You can try, but 80% of links on Reddit are dead, low-quality budget batches with terrible stitching, or affiliate bait. I spent hundreds of pounds testing batches so you don't waste money on items that fail QC.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="border-t border-white/5 py-10 px-4 text-center text-xs text-slate-500 mt-12">
-    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div class="flex items-center gap-2">
-        <span class="font-black text-white uppercase text-sm">GRIFFITH<span class="text-cyan-400">RESELLZ</span></span>
-        <span class="text-[10px] text-slate-400 font-mono">© 2026 griffith-resellz.shop</span>
-      </div>
-      <div class="text-slate-400 text-[11px]">
-        Built for resellers who want real numbers, not fluff.
-      </div>
-      <div class="flex items-center gap-3 text-cyan-400 font-semibold text-[11px]">
-        <a href="#story" class="hover:underline">About</a>
-        <a href="#vault" class="hover:underline">Catalog</a>
-        <a href="#bundle" class="hover:underline">Master Vault</a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- ===================================================================== -->
-  <!-- CHECKOUT MODAL: COMPATIBLE WITH WHOP / PAYHIP & DIRECT BUYER DELIVERY -->
-  <!-- ===================================================================== -->
-  <div id="checkout-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md hidden">
-    <div class="relative w-full max-w-md rounded-2xl bg-[#0b0e17] border border-cyan-500/40 shadow-[0_0_50px_rgba(6,182,212,0.3)] overflow-hidden">
+  <!-- ZERO-CAPITAL CHECKOUT MODAL & ACCESS DELIVERY -->
+  <div id="checkout-modal" class="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/85 backdrop-blur-sm hidden">
+    <div class="relative w-full max-w-md rounded-t-3xl sm:rounded-2xl bg-[#0a0c12] border-t sm:border border-indigo-500/30 p-5 shadow-2xl overflow-hidden animate-in slide-in-from-bottom sm:slide-in-from-center duration-200">
       
+      <!-- Drag pill on mobile -->
+      <div class="w-10 h-1 bg-white/20 rounded-full mx-auto mb-3 sm:hidden"></div>
+
       <!-- Modal Header -->
-      <div class="flex items-center justify-between p-4 border-b border-white/10 bg-slate-900/60">
+      <div class="flex items-center justify-between pb-3 border-b border-white/10">
         <div class="flex items-center gap-2">
-          <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+          <div class="w-2 h-2 rounded-full bg-indigo-400"></div>
           <span class="font-bold text-xs text-white uppercase tracking-wider">Instant Vault Checkout</span>
         </div>
-        <button onclick="closeCheckoutModal()" class="text-slate-400 hover:text-white text-base">✕</button>
+        <button onclick="closeCheckout()" class="p-1 text-slate-400 hover:text-white text-base">✕</button>
       </div>
 
-      <div class="p-6">
-        <!-- Item summary -->
-        <div class="flex items-center justify-between pb-4 mb-4 border-b border-white/10">
+      <!-- Payment Body -->
+      <div class="pt-4" id="checkout-form-view">
+        <div class="flex justify-between items-baseline mb-3">
           <div>
-            <span class="text-[10px] text-cyan-400 font-mono font-bold uppercase tracking-wider">SELECTED LIST</span>
-            <h4 id="modal-product-title" class="text-white font-extrabold text-sm sm:text-base">Shoes & Sneakers Supplier</h4>
-            <p class="text-[11px] text-slate-400">Instant digital access unlocked right after</p>
+            <h4 id="checkout-item-title" class="text-white font-extrabold text-sm sm:text-base">Master Vault</h4>
+            <div class="text-[11px] text-slate-400">Private link delivery immediately after</div>
           </div>
-          <div class="text-right">
-            <div id="modal-product-price" class="text-xl font-black text-cyan-400 font-mono">£14.99</div>
-            <div class="text-[10px] text-slate-500 line-through">£29.99</div>
-          </div>
+          <div id="checkout-item-price" class="text-xl font-black text-indigo-400 font-mono">£29.99</div>
         </div>
 
-        <!-- Checkout View -->
-        <div id="modal-payment-state">
-          <div class="space-y-3">
-            <div>
-              <label class="block text-xs font-semibold text-slate-300 mb-1">Your Email (Where secret link is sent)</label>
-              <input 
-                type="email" 
-                id="buyer-email" 
-                required 
-                placeholder="name@gmail.com" 
-                class="w-full px-3 py-2.5 rounded-xl bg-black/60 border border-white/10 text-white text-xs placeholder-slate-500 focus:outline-none focus:border-cyan-400 font-mono"
-              />
-            </div>
-
-            <!-- Apple Pay / Instant Whop Button -->
-            <button 
-              onclick="executePayment()"
-              class="w-full py-3 rounded-xl bg-white hover:bg-slate-100 text-black font-black text-sm flex items-center justify-center gap-1.5 transition shadow"
-            >
-              <span>Pay with</span>
-              <span class="font-mono text-base font-black tracking-tight">Pay</span>
-            </button>
-
-            <div class="flex items-center gap-2 text-[10px] text-slate-500 my-1">
-              <div class="h-[1px] flex-1 bg-white/10"></div>
-              <span>OR CREDIT / DEBIT CARD</span>
-              <div class="h-[1px] flex-1 bg-white/10"></div>
-            </div>
-
-            <!-- Standard Card Button -->
-            <button 
-              onclick="executePayment()"
-              id="modal-pay-button"
-              class="w-full py-3 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-black font-black text-xs uppercase tracking-wider shadow-[0_0_20px_rgba(6,182,212,0.4)] transition active:scale-95"
-            >
-              Pay Now & Unlock Links
-            </button>
-          </div>
-
-          <div class="flex items-center justify-center gap-2 text-[10px] text-slate-500 mt-4">
-            <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-            <span>256-Bit Encrypted • Instant Direct Delivery</span>
-          </div>
-        </div>
-
-        <!-- Success Unlocked State (Delivers the page URL) -->
-        <div id="modal-success-state" class="hidden text-center space-y-4">
-          <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto">
-            <svg class="w-6 h-6 stroke-[3]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
-          </div>
+        <form onsubmit="handleCheckoutSubmit(event)" class="space-y-3">
           <div>
-            <h4 class="text-lg font-black text-white">Payment Unlocked!</h4>
-            <p class="text-xs text-slate-400 mt-1">Here is your private unlisted access link to the supplier vault:</p>
+            <label class="block text-[11px] font-semibold text-slate-300 mb-1">Your Email (Where secret vault is routed)</label>
+            <input 
+              type="email" 
+              id="buyer-email" 
+              required 
+              placeholder="you@gmail.com"
+              class="w-full px-3.5 py-2.5 rounded-xl bg-black/70 border border-white/10 text-white text-xs placeholder-slate-500 focus:outline-none focus:border-indigo-400 font-mono"
+            />
           </div>
 
-          <div class="p-3 bg-black/80 border border-cyan-500/30 rounded-xl text-left">
-            <div class="text-[10px] text-cyan-400 font-mono font-bold uppercase mb-1">Your Direct Vault Page:</div>
-            <div id="vault-access-link" class="text-xs font-mono text-white break-all">
-              https://griffith-resellz.shop/vault-access/
-            </div>
-          </div>
-
-          <a 
-            id="modal-open-vault-btn"
-            href="#" 
-            target="_blank"
-            class="block w-full py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-black font-extrabold text-xs transition uppercase tracking-wider"
+          <!-- Apple Pay Option -->
+          <button 
+            type="submit" 
+            class="tap-effect w-full py-3 rounded-xl bg-white text-black font-black text-xs flex items-center justify-center gap-1.5 shadow"
           >
-            Open Private Vault Now &rarr;
-          </a>
+            <span>Pay with</span>
+            <span class="text-sm font-black tracking-tight">Pay</span>
+          </button>
+
+          <div class="flex items-center gap-2 text-[10px] text-slate-500 my-0.5">
+            <div class="h-[1px] flex-1 bg-white/10"></div>
+            <span>OR CARD</span>
+            <div class="h-[1px] flex-1 bg-white/10"></div>
+          </div>
+
+          <button 
+            type="submit" 
+            id="checkout-submit-btn"
+            class="tap-effect w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-black text-xs uppercase tracking-wider shadow-[0_0_20px_rgba(99,102,241,0.4)] transition"
+          >
+            Complete Order & Unlock Access
+          </button>
+        </form>
+
+        <div class="flex items-center justify-center gap-1.5 text-[10px] text-slate-500 pt-3">
+          <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+          <span>SSL Encrypted • Direct Link Unlock</span>
+        </div>
+      </div>
+
+      <!-- Access Granted View -->
+      <div class="pt-4 text-center hidden space-y-3.5" id="checkout-success-view">
+        <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto">
+          <svg class="w-6 h-6 stroke-[3]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
         </div>
 
+        <div>
+          <h4 class="text-base font-extrabold text-white">Access Unlocked</h4>
+          <p class="text-xs text-slate-400 mt-1">Here is your private unlisted supplier catalog URL:</p>
+        </div>
+
+        <div class="p-3 bg-black/80 border border-indigo-500/30 rounded-xl text-left font-mono">
+          <div class="text-[10px] text-indigo-400 font-bold mb-1 uppercase">Direct Vault Link:</div>
+          <div id="unlocked-url" class="text-xs text-white break-all">https://griffith-resellz.shop/vault-master/</div>
+        </div>
+
+        <a 
+          id="unlocked-open-btn"
+          href="#" 
+          target="_blank"
+          class="tap-effect block w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-extrabold text-xs uppercase tracking-wider text-center"
+        >
+          Open Private Vault Now &rarr;
+        </a>
       </div>
+
     </div>
   </div>
 
   <script>
-    // 12 Exact Categories from your Scraper
+    // 12 Scraped Categories
     const CATEGORIES = [
-      { id: 'shoes', title: 'Shoes & Sneakers', price: 14.99, original: 29.99, desc: 'Dunks, AF1s, Runners, Bapesta & Balenciaga plugs.', tag: 'BEST SELLER' },
-      { id: 'hoodies-sweaters', title: 'Hoodies & Sweaters', price: 11.99, original: 24.99, desc: 'Heavyweight fleeces, essentials, knitwear & zip-ups.', tag: 'HOT' },
-      { id: 't-shirts', title: 'T-Shirts & Tops', price: 9.99, original: 19.99, desc: 'Graphic tees, vintage washes, oversized cuts.', tag: 'FAST FLIP' },
-      { id: 'jackets', title: 'Jackets & Puffers', price: 14.99, original: 34.99, desc: 'Down puffers, windbreakers, gilets (£70+ profit flips).', tag: 'HIGH PROFIT' },
-      { id: 'pants-shorts', title: 'Pants & Shorts', price: 9.99, original: 19.99, desc: 'Cargo pants, sweatpants, fleece shorts.', tag: 'ESSENTIAL' },
-      { id: 'jersey', title: 'Football Jerseys', price: 9.99, original: 22.99, desc: 'Retro classics and current season kits.', tag: 'HIGH DEMAND' },
-      { id: 'accessories', title: 'Belts & Accessories', price: 8.99, original: 18.99, desc: 'Designer belts, wallets, cardholders, sunglasses.', tag: 'EASY POST' },
-      { id: 'perfume', title: 'Fragrances & Scent', price: 11.99, original: 25.99, desc: 'High-margin luxury cologne and perfume bottles.', tag: 'VIRAL' },
-      { id: 'bags', title: 'Bags & Backpacks', price: 11.99, original: 27.99, desc: 'Crossbody bags, shoulder bags, luxury backpacks.', tag: 'STEADY' },
-      { id: 'electronics', title: 'Tech & Earbuds', price: 12.99, original: 32.99, desc: 'Wireless ANC headphones, chargers, viral tech.', tag: 'VIRAL TIKTOK' },
-      { id: 'headwear', title: 'Caps & Beanies', price: 8.99, original: 16.99, desc: 'Fitted caps, beanies, knitted winter balaclavas.', tag: 'CHEAP SOURCE' },
-      { id: 'other-stuff', title: 'Other Viral Items', price: 8.99, original: 18.99, desc: 'Stanley tumblers, bearbricks, viral plush toys.', tag: 'TRENDING' }
+      { id: 'shoes', title: 'Shoes & Sneakers Plugs', price: 14.99, desc: 'Dunks, AF1s, Bapesta, Track Runners. 1:1 shape & stitching.', count: '45+ Products' },
+      { id: 'hoodies-sweaters', title: 'Hoodies & Sweaters', price: 11.99, desc: 'Heavyweight French terry fleeces, knitwear & zip-ups.', count: '35+ Products' },
+      { id: 't-shirts', title: 'Streetwear T-Shirts', price: 9.99, desc: 'Oversized blanks, accurate neck tags, graphic prints.', count: '40+ Products' },
+      { id: 'jackets', title: 'Down Puffers & Jackets', price: 14.99, desc: 'Puffer down fill, windbreakers, gilets. High profit flips.', count: '25+ Products' },
+      { id: 'pants-shorts', title: 'Pants, Cargo & Shorts', price: 9.99, desc: 'Fleece shorts, cargo trousers, tracksuit bottoms.', count: '30+ Products' },
+      { id: 'jersey', title: 'Retro & Current Jerseys', price: 9.99, desc: 'Classic football kits, embroidered badges, player versions.', count: '50+ Products' },
+      { id: 'accessories', title: 'Accessories & Belts', price: 8.99, desc: 'Leather belts, cardholders, sunglasses, chains.', count: '30+ Products' },
+      { id: 'perfume', title: 'Fragrances & Colognes', price: 11.99, desc: 'High-end designer scent suppliers with identical bottles.', count: '20+ Products' },
+      { id: 'bags', title: 'Backpacks & Handbags', price: 11.99, desc: 'Shoulder bags, luxury backpacks, travel duffels.', count: '25+ Products' },
+      { id: 'electronics', title: 'Wireless Tech & Audio', price: 12.99, desc: 'ANC wireless headphones, chargers, viral electronics.', count: '28+ Products' },
+      { id: 'headwear', title: 'Caps, Beanies & Hats', price: 8.99, desc: 'Fitted caps, beanies, winter balaclavas. Cheap unit costs.', count: '20+ Products' },
+      { id: 'other-stuff', title: 'Other Viral Stock', price: 8.99, desc: 'Stanley tumblers, plush toys, trending collectibles.', count: '15+ Products' }
     ];
 
-    // Optional: Whop / Payhip links configuration (Add your links here when ready)
-    const EXTERNAL_CHECKOUT_URLS = {
-      // 'bundle-master': 'https://whop.com/checkout/YOUR_LINK_HERE',
-      // 'shoes': 'https://whop.com/checkout/YOUR_LINK_HERE'
-    };
+    let currentCurrency = 'GBP';
+    const currencyMultipliers = { GBP: 1.0, EUR: 1.17, USD: 1.28 };
+    const currencySymbols = { GBP: '£', EUR: '€', USD: '$' };
 
-    // Render Categories
-    function renderCategories() {
-      const container = document.getElementById('categories-grid');
+    let currentCheckoutProduct = null;
+
+    function setCurrency(curr) {
+      currentCurrency = curr;
+      document.querySelectorAll('[id^="btn-curr-"]').forEach(b => {
+        b.className = 'px-1.5 py-0.5 rounded font-bold text-slate-400 hover:text-white';
+      });
+      document.getElementById(`btn-curr-${curr}`).className = 'px-1.5 py-0.5 rounded font-bold bg-indigo-600 text-white';
+
+      updateDisplayedPrices();
+    }
+
+    function formatPrice(gbpVal) {
+      const converted = gbpVal * currencyMultipliers[currentCurrency];
+      return `${currencySymbols[currentCurrency]}${converted.toFixed(2)}`;
+    }
+
+    function updateDisplayedPrices() {
+      document.getElementById('price-master').innerText = formatPrice(29.99);
+      document.getElementById('price-sticky').innerText = formatPrice(29.99);
+      renderCards();
+    }
+
+    function renderCards() {
+      const container = document.getElementById('category-cards-container');
       container.innerHTML = '';
 
-      CATEGORIES.forEach(item => {
-        const card = document.createElement('div');
-        card.className = 'glass-card glass-card-hover rounded-2xl p-5 flex flex-col justify-between transition-all duration-300';
-        card.innerHTML = `
-          <div>
-            <div class="flex items-center justify-between mb-3">
-              <span class="text-[9px] font-black px-2 py-0.5 rounded bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 uppercase">${item.tag}</span>
-              <span class="text-[10px] text-slate-500 font-mono">Direct Agent Link</span>
+      CATEGORIES.forEach(cat => {
+        const row = document.createElement('div');
+        row.className = 'glass-panel p-3.5 rounded-xl flex items-center justify-between gap-3 border border-white/5 active:border-indigo-500/40 transition';
+        row.innerHTML = `
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-2 mb-0.5">
+              <span class="text-xs font-bold text-white truncate">${cat.title}</span>
+              <span class="text-[9px] font-mono text-indigo-400 px-1.5 py-0.2 rounded bg-indigo-500/10 shrink-0">${cat.count}</span>
             </div>
-            <h3 class="text-base font-extrabold text-white leading-snug">${item.title}</h3>
-            <p class="text-slate-400 text-xs mt-1.5 leading-relaxed">${item.desc}</p>
+            <p class="text-[11px] text-slate-400 truncate">${cat.desc}</p>
           </div>
 
-          <div class="pt-4 mt-4 border-t border-white/5 flex items-center justify-between">
-            <div>
-              <span class="text-xs text-slate-500 line-through mr-1 font-mono">£${item.original}</span>
-              <span class="text-base font-black text-white font-mono">£${item.price}</span>
-            </div>
+          <div class="flex items-center gap-2.5 shrink-0">
+            <span class="font-mono font-bold text-xs text-white">${formatPrice(cat.price)}</span>
             <button 
-              onclick="openCheckoutModal('${item.title}', ${item.price}, '${item.id}')"
-              class="px-3.5 py-1.5 rounded-xl bg-white/10 hover:bg-cyan-500 hover:text-black text-slate-200 font-bold text-xs transition"
+              onclick="openCheckout('${cat.title}', ${cat.price}, '${cat.id}')"
+              class="tap-effect px-3 py-1.5 rounded-lg bg-white/10 hover:bg-indigo-600 text-white font-bold text-xs transition"
             >
-              Get Access
+              Get
             </button>
           </div>
         `;
-        container.appendChild(card);
+        container.appendChild(row);
       });
     }
 
-    let activeModalProduct = null;
+    function openCheckout(title, gbpPrice, id) {
+      currentCheckoutProduct = { title, gbpPrice, id };
+      document.getElementById('checkout-item-title').innerText = title;
+      document.getElementById('checkout-item-price').innerText = formatPrice(gbpPrice);
+      document.getElementById('checkout-submit-btn').innerText = `Pay ${formatPrice(gbpPrice)} & Unlock`;
 
-    function openCheckoutModal(title, price, id) {
-      // If you configured an external Whop / Payhip link for this item, open it directly
-      if (EXTERNAL_CHECKOUT_URLS[id]) {
-        window.open(EXTERNAL_CHECKOUT_URLS[id], '_blank');
-        return;
-      }
-
-      activeModalProduct = { title, price, id };
-      document.getElementById('modal-product-title').innerText = title;
-      document.getElementById('modal-product-price').innerText = '£' + price.toFixed(2);
-      document.getElementById('modal-pay-button').innerText = `Pay £${price.toFixed(2)} & Unlock Links`;
-      
-      // Reset state
-      document.getElementById('modal-payment-state').classList.remove('hidden');
-      document.getElementById('modal-success-state').classList.add('hidden');
+      document.getElementById('checkout-form-view').classList.remove('hidden');
+      document.getElementById('checkout-success-view').classList.add('hidden');
       document.getElementById('checkout-modal').classList.remove('hidden');
     }
 
-    function closeCheckoutModal() {
+    function closeCheckout() {
       document.getElementById('checkout-modal').classList.add('hidden');
     }
 
-    function executePayment() {
+    function handleCheckoutSubmit(e) {
+      e.preventDefault();
       const email = document.getElementById('buyer-email').value.trim();
-      if (!email || !email.includes('@')) {
-        alert('Please enter a valid email address so we can route your vault access.');
-        return;
-      }
+      if (!email || !email.includes('@')) return;
 
-      // Compute destination vault URL for this category
-      const targetSlug = activeModalProduct ? activeModalProduct.id : 'master';
-      const secretUrl = `https://griffith-resellz.shop/vault-${targetSlug}/`;
+      const slug = currentCheckoutProduct ? currentCheckoutProduct.id : 'master';
+      const targetUrl = `https://griffith-resellz.shop/vault-${slug}/`;
 
-      document.getElementById('vault-access-link').innerText = secretUrl;
-      document.getElementById('modal-open-vault-btn').href = secretUrl;
+      document.getElementById('unlocked-url').innerText = targetUrl;
+      document.getElementById('unlocked-open-btn').href = targetUrl;
 
-      // Switch to success view
-      document.getElementById('modal-payment-state').classList.add('hidden');
-      document.getElementById('modal-success-state').classList.remove('hidden');
+      document.getElementById('checkout-form-view').classList.add('hidden');
+      document.getElementById('checkout-success-view').classList.remove('hidden');
     }
 
-    function toggleFaq(header) {
-      const p = header.nextElementSibling;
-      const icon = header.querySelector('span:last-child');
-      if (p.classList.contains('hidden')) {
-        p.classList.remove('hidden');
-        icon.innerText = '−';
-      } else {
-        p.classList.add('hidden');
-        icon.innerText = '+';
-      }
+    function scrollToElement(id) {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
     }
 
-    document.addEventListener('DOMContentLoaded', renderCategories);
+    // Attempt to load the user's Griffith image into the backdrop element
+    window.addEventListener('DOMContentLoaded', () => {
+      renderCards();
+      
+      // If the uploaded Berserk/Griffith artwork is in the repo, update this src
+      const bgImg = document.getElementById('griffith-bg-art');
+      if (bgImg) {
+        bgImg.src = '_femto_griffith_render_2__by_wtfbooomsh_dfechiv-fullview.jpg';
+      }
+    });
   </script>
 </body>
 </html>
